@@ -7,7 +7,7 @@ export default function App() {
 
   // Fetch the JSON data bridge on component mount
   useEffect(() => {
-    fetch("/scraped_products.json")
+    fetch(`${import.meta.env.BASE_URL}scraped_products.json`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
