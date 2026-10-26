@@ -1,0 +1,17 @@
+# Python bytecode / cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Scraped data outputs (so we don't commit big CSV/JSON files)
+data/
+*.csv
+*.json
+
+# IDE settings
+.vscode/
+.DS_Store
