@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 
 export default function App() {
-  const [products, setProducts] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Fetch the JSON data bridge on component mount
+  // Fetch the JSON data bridge on component mount with cache-busting timestamp
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}scraped_products.json`)
+    fetch(`${import.meta.env.BASE_URL}scraped_products.json?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        setJobs(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching scraped products:", err);
+        console.error("Error fetching job listings:", err);
         setLoading(false);
       });
   }, []);
 
-  // Filter products based on search input
-  const filteredProducts = products.filter((item) =>
+  // Filter job listings based on search input
+  const filteredJobs = jobs.filter((item) =>
     Object.values(item).some((val) =>
       String(val).toLowerCase().includes(searchTerm.toLowerCase()),
     ),
@@ -33,12 +33,8 @@ export default function App() {
         <h1 className="text-xl font-bold tracking-tight text-emerald-400">
           MarketPulse
         </h1>
-        <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
-          {products.length} Items Live
-        </span>
-
         <span className="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-medium">
-          {products.length} Active Openings
+          {jobs.length} Active Openings
         </span>
       </header>
 
@@ -48,7 +44,7 @@ export default function App() {
         <div className="relative">
           <input
             type="text"
-            placeholder="Search scraped data..."
+            placeholder="Search titles, roles, locations, or skills..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all shadow-sm"
@@ -58,28 +54,28 @@ export default function App() {
         {/* Loading State */}
         {loading && (
           <div className="text-center py-12 text-slate-400 animate-pulse">
-            Loading your dashboard data...
+            Loading job listings...
           </div>
         )}
 
         {/* Empty State */}
-        {!loading && filteredProducts.length === 0 && (
+        {!loading && filteredJobs.length === 0 && (
           <div className="text-center py-12 text-slate-400 bg-slate-800/40 rounded-xl border border-slate-800">
-            No matching items found.
+            No matching technical roles found.
           </div>
         )}
 
-        {/* Product Cards Grid */}
+        {/* Job Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {!loading &&
-            filteredProducts.map((item, index) => (
+            filteredJobs.map((item, index) => (
               <div
                 key={index}
                 className="bg-slate-800/60 border border-slate-700/60 rounded-xl p-4 flex flex-col justify-between gap-3 shadow-md hover:border-slate-600 transition-all"
               >
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                   <span className="text-xs font-semibold text-emerald-400 tracking-wider uppercase">
-                    {item.Category || "Product"}
+                    {item.Category || "Technical / Engineering"}
                   </span>
                   <h2 className="text-base font-medium text-slate-100 line-clamp-2">
                     {item.Title}
@@ -87,8 +83,8 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-slate-700/40">
-                  <span className="text-lg font-bold text-slate-50">
-                    {item.Price_GBP}
+                  <span className="text-xs font-medium text-slate-400 flex items-center gap-1">
+                    📍 {item.Price_GBP}
                   </span>
                   {item.Link && (
                     <a
@@ -97,7 +93,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       className="text-xs bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-lg border border-emerald-500/20 transition-all font-medium"
                     >
-                      View Source
+                      View Role
                     </a>
                   )}
                 </div>
