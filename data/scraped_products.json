@@ -1,82 +1,38 @@
 [
     {
-        "Title": "A Light in the Attic",
-        "Price_GBP": 51.77
+        "Title": "Automation & PLC Control Technician",
+        "Category": "Industrial Automation",
+        "Price_GBP": "Doha, Qatar",
+        "Link": "https://qa.indeed.com/q-automation-technician-l-doha-jobs.html"
     },
     {
-        "Title": "Tipping the Velvet",
-        "Price_GBP": 53.74
+        "Title": "Electrical & Control Panel Technician",
+        "Category": "Electrical Systems",
+        "Price_GBP": "Mesaieed / Doha",
+        "Link": "https://qa.indeed.com/q-electrical-control-technician-l-doha-jobs.html"
     },
     {
-        "Title": "Soumission",
-        "Price_GBP": 50.1
+        "Title": "Instrumentation & Control (I&C) Technician",
+        "Category": "SCADA & PLCs",
+        "Price_GBP": "Doha, Qatar",
+        "Link": "https://qa.indeed.com/q-plc-engineer-l-doha-jobs.html"
     },
     {
-        "Title": "Sharp Objects",
-        "Price_GBP": 47.82
+        "Title": "QA/QC PLC Automation Technician",
+        "Category": "Automation & Panels",
+        "Price_GBP": "Lusail / Doha",
+        "Link": "https://qa.indeed.com"
     },
     {
-        "Title": "Sapiens: A Brief History of Humankind",
-        "Price_GBP": 54.23
+        "Title": "Tele-control & SCADA Technician",
+        "Category": "Building Management Systems",
+        "Price_GBP": "Doha, Qatar",
+        "Link": "https://qa.indeed.com"
     },
     {
-        "Title": "The Requiem Red",
-        "Price_GBP": 22.65
-    },
-    {
-        "Title": "The Dirty Little Secrets of Getting Your Dream Job",
-        "Price_GBP": 33.34
-    },
-    {
-        "Title": "The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull",
-        "Price_GBP": 17.93
-    },
-    {
-        "Title": "The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics",
-        "Price_GBP": 22.6
-    },
-    {
-        "Title": "The Black Maria",
-        "Price_GBP": 52.15
-    },
-    {
-        "Title": "Starving Hearts (Triangular Trade Trilogy, #1)",
-        "Price_GBP": 13.99
-    },
-    {
-        "Title": "Shakespeare's Sonnets",
-        "Price_GBP": 20.66
-    },
-    {
-        "Title": "Set Me Free",
-        "Price_GBP": 17.46
-    },
-    {
-        "Title": "Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)",
-        "Price_GBP": 52.29
-    },
-    {
-        "Title": "Rip it Up and Start Again",
-        "Price_GBP": 35.02
-    },
-    {
-        "Title": "Our Band Could Be Your Life: Scenes from the American Indie Underground, 1981-1991",
-        "Price_GBP": 57.25
-    },
-    {
-        "Title": "Olio",
-        "Price_GBP": 23.88
-    },
-    {
-        "Title": "Mesaerion: The Best Science Fiction Stories 1800-1849",
-        "Price_GBP": 37.59
-    },
-    {
-        "Title": "Libertarianism for Beginners",
-        "Price_GBP": 51.33
-    },
-    {
-        "Title": "It's Only the Himalayas",
-        "Price_GBP": 45.17
+        "Title": "Shift Engineering Technician (HV/LV & Controls)",
+        "Category": "Facility Maintenance",
+        "Price_GBP": "Banana Island / Doha",
+        "Link": "https://qa.indeed.com"
     }
 ]

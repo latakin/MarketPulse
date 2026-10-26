@@ -36,6 +36,10 @@ export default function App() {
         <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700">
           {products.length} Items Live
         </span>
+
+        <span className="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-medium">
+          {products.length} Active Openings
+        </span>
       </header>
 
       {/* Main Content Area */}

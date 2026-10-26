@@ -1,27 +1,21 @@
+# main.py
+import shutil
+import os
 from scraper import scrape_market
 from storage import save_to_csv, save_to_json
-from config import OUTPUT_FILE
+from config import OUTPUT_CSV, OUTPUT_JSON, PUBLIC_JSON
 
 def main():
-    print("[-] Starting MarketPulse Scraper...")
+    print("[-] Fetching technical job updates in Qatar...")
+    jobs = scrape_market()
     
-    # Step 1: Execute scraping logic
-    books_data = scrape_market()
+    save_to_csv(jobs, OUTPUT_CSV)
+    save_to_json(jobs, OUTPUT_JSON)
     
-    # Step 2: Save to both CSV and JSON formats
-    if books_data:
-        print(f"[*] Processing {len(books_data)} records for storage...")
-        
-        # Save CSV (for data analysis or spreadsheet use)
-        save_to_csv(books_data, OUTPUT_FILE)
-        
-        # Save JSON (for your React frontend to read)
-        json_output_path = OUTPUT_FILE.replace(".csv", ".json")
-        save_to_json(books_data, json_output_path)
-        
-        print("[+] MarketPulse run completed successfully!")
-    else:
-        print("[!] No data collected.")
+    # Auto-sync to public directory for React
+    os.makedirs("public", exist_ok=True)
+    shutil.copy(OUTPUT_JSON, PUBLIC_JSON)
+    print(f"[+] Synced data directly to {PUBLIC_JSON}!")
 
 if __name__ == "__main__":
     main()
