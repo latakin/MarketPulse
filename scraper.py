@@ -1,3 +1,4 @@
+import re
 import requests
 from bs4 import BeautifulSoup
 from config import BASE_URL, HEADERS
@@ -10,8 +11,6 @@ def fetch_page(url):
     try:
         print(f"[*] Fetching page: {url}")
         response = requests.get(url, headers=HEADERS)
-        
-        # Raise an exception for HTTP error codes (like 404 or 403)
         response.raise_for_status()
         return response.text
         
@@ -30,30 +29,32 @@ def parse_books(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
     books_data = []
 
-    # Find all book article containers on the page
     book_items = soup.find_all("article", class_="product_pod")
     print(f"[*] Found {len(book_items)} items on the page. Parsing...")
 
     for item in book_items:
         try:
-            # Extract title (stored in the 'title' attribute of the <a> tag inside <h3>)
+            # Extract title
             title = item.find("h3").find("a")["title"]
             
-            # Extract raw price string (e.g., "£51.77")
+            # Extract raw price string
             price_str = item.find("p", class_="price_color").text.strip()
             
-            # Clean up the price: remove currency symbol ('£') and convert to float
-            clean_price = float(price_str.replace("£", ""))
+            # Robust extraction using Regex: grabs only digits and dots (e.g., "51.77")
+            match = re.search(r"[\d.]+", price_str)
+            if match:
+                clean_price = float(match.group())
+            else:
+                raise ValueError(f"Could not extract numeric price from: {price_str}")
             
-            # Store in a structured dictionary
+            # Store in structured dictionary
             books_data.append({
                 "Title": title,
                 "Price_GBP": clean_price
             })
             
-        except AttributeError as e:
-            # Handle cases where an expected HTML element might be missing
-            print(f"[!] Skipping an item due to missing fields: {e}")
+        except Exception as e:
+            print(f"[!] Skipping an item due to parsing error: {e}")
             continue
 
     return books_data

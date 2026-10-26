@@ -1,17 +1,24 @@
-# Python bytecode / cache files
-__pycache__/
-*.py[cod]
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Virtual environment
-venv/
-env/
-.venv/
+node_modules
+dist
+dist-ssr
+*.local
 
-# Scraped data outputs (so we don't commit big CSV/JSON files)
-data/
-*.csv
-*.json
-
-# IDE settings
-.vscode/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
